@@ -1,0 +1,1 @@
+{{-- {@dump(Auth::guard('clients')->user())} --}}

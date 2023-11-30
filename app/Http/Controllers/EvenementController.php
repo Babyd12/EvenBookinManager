@@ -4,15 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\Evenement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EvenementController extends Controller
 {
+    // private function extractDataWithImage(AssociationFormReques $request, Evenement $property ): array 
+    // {
+    //     // La je traite les données qui sont envoyé par le navigateur
+    //     $data = $request -> validated();
+    //     $image = $request ->validated('image');
+    //     //dd($image);
+    //     if($image === null || $image ->getError() ){
+    //         return $data;
+    //     }
+    //     //la je traite les données de l'instance du model
+    //     if($property -> image ){
+    //         Storage::disk('public')->delete($property -> image);
+    //     }
+    //     $data['image'] = $image -> store('evenmentImg', 'public');
+    //     // dd($data);
+    //     return $data;
+
+    // }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('home');
     }
 
     /**

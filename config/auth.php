@@ -13,10 +13,12 @@ return [
     |
     */
 
+
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'mot_de_passe' => 'users',
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -40,7 +42,21 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'clients' => [
+            'driver' => 'session',
+            'provider' => 'clients',
+        ],  
+
+        'associations' => [
+            'driver' => 'session',
+            'provider' => 'associations',
+        ],  
+
     ],
+
+
+  
 
     /*
     |--------------------------------------------------------------------------
@@ -63,6 +79,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+           
+        ],
+        'clients' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Client::class,
+        ],
+
+        'associations' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Association::class,
         ],
 
         // 'users' => [
@@ -70,6 +96,8 @@ return [
         //     'table' => 'users',
         // ],
     ],
+
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -96,6 +124,22 @@ return [
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
+        ],
+
+        'clients' => [
+            'provider' => 'clients',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+            'column' => 'mot_de_passe',
+        ],
+
+        'associations' => [
+            'provider' => 'clients',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+            'column' => 'mot_de_passe',
         ],
     ],
 
