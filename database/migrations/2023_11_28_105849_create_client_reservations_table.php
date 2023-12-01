@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('client_reservations', function (Blueprint $table) {
+        Schema::create('client_evenement', function (Blueprint $table) {
             $table->id();
             $table->string('reference');
             $table->date('date_reservation');
-            $table-> string('est_accepte_ou_pas');
+            $table-> boolean('est_accepte_ou_pas');
+            $table-> integer('est_accompager_par');
             $table->foreignIdFor(Client::class)->constrained()->cascadeOnDelete(); 
             $table->foreignIdFor(Evenement::class)->constrained()->cascadeOnDelete(); 
             $table->timestamps();

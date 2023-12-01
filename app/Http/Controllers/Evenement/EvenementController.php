@@ -39,7 +39,7 @@ class EvenementController extends Controller
     {    //$associationId = session('association_id'); Au faite jai stocké l'id de l'association la session de laravel juste apres avoir enregistre sont evenement p
        
         return view('associations.evenements.index',[
-            'evenements' => Evenement::orderBy('created_at', 'desc')->where('association_id', '=', Auth::guard('clients')->user()->id )->paginate(9),
+            'evenements' => Evenement::orderBy('created_at', 'desc')->where('association_id', '=', Auth::guard('associations')->user()->id )->paginate(9),
         ]);
     }
 
@@ -48,10 +48,14 @@ class EvenementController extends Controller
      */
     public function create()
     {
-      
-        return view('associations.evenements.form', [
-            'evenement' => new Evenement(),
-        ]);
+       if( Auth::guard('associations')->user())
+       {
+           return view('associations.evenements.form', [
+               'evenement' => new Evenement(),
+           ]);  
+       } else {
+        return view('register.register_association');
+       }
     }
 
     /**

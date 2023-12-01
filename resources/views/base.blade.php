@@ -29,15 +29,16 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">Compte association</a>
+                        <a class="nav-link" href="{{ route('association.evenement.create')}}">Compte association</a>
                     </li>
                 </ul>
-        
-                    @auth('clients')
+                    @if( auth('clients')->check() )  
                         @include('shared.formBtn', ['method' => 'post', 'another_method' => 'delete', 'action' => 'logoutClient' , 'value' =>'Se déconnecter', 'token' => true] )
+                    @elseif (auth('associations')->check())   
+                        @include('shared.formBtn', ['method' => 'post', 'another_method' => 'delete', 'action' => 'logoutClient' , 'value' =>'Se déconnecter', 'token' => true] )     
                     @else
-                        @include('shared.formBtn', ['method' => 'get', 'action' => 'login' , 'value' =>'Se connecter', 'token' => false] )
-                    @endauth         
+                        @include('shared.formBtn', ['method' => 'get', 'action' => 'clientLoginForm' , 'value' =>'Se connecter', 'token' => false] )
+                    @endif
             </div>
         </div>
     </nav>

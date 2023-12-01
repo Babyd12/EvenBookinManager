@@ -17,6 +17,6 @@
         </div>
         <i class="bi-chat-square"></i>
 
-        <a href="/comment/{{ $evenement -> id }}">Participer</a>
+        <a class="btn btn-primary  btn-sm bg-dark"  href=" {{ route('est_il_accompagner', ['evenement_id' => $evenement ->id, 'association_id' => $evenement->association->id  ]) }} ">Participer</a>
     </div>
 </div>

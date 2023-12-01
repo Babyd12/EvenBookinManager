@@ -9,7 +9,7 @@
     <body>
 
         <div class=" col-md-4 mx-auto mt-5 " style="color:#fff padding: 20px; border-radius: 10px;">
-            <form class="form-horizontal " action="{{ route('register') }}" method="post">
+            <form class="form-horizontal " action="{{ route('register.client') }}" method="post">
                 @csrf
                 @method('post')
                 <legend class="text-center">Inscription</legend>

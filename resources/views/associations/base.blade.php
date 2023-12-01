@@ -57,9 +57,12 @@
                                     <a href=" {{ route('association.evenement.create') }} ">Ajouter un évenement</a>
                                 </li>
                                 <li>
-                                    <a href=" {{ route('association.evenement.index', ['association_id' => Auth::guard('clients')->user()->id ] ) }} ">Liste des évenements</a>
+                                    <a href=" {{ route('association.evenement.index', ['association_id' => Auth::guard('associations')->user()->id ] ) }} ">Liste des évenements</a>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="/home">Site web</a>
                         </li>
                         <li>
                             <a href="#">Github link</a>
@@ -67,7 +70,7 @@
                     </ul>
                 </nav>
             </div>
-            @auth('clients')
+            @auth('associations')
                 @include('shared.formBtn', ['class' => 'bg-dark','method' => 'post','another_method' => 'delete','action' => 'logoutClient', 'value' => 'Se déconnecter','token' => true])
             @endauth
         </nav>

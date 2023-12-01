@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+
+
+
 
 class Evenement extends Model
 {
@@ -22,6 +27,8 @@ class Evenement extends Model
         'date_limite_inscription',
         'est_cloturer_ou_pas',
         'association_id',
+        'reference',
+    
     ];
 
     public function association(): BelongsTo
@@ -29,10 +36,16 @@ class Evenement extends Model
         return $this->BelongsTo(Association::class);
     }
 
-    public function clients(): HasMany
+    public function clients(): BelongsToMany
     {
-        return $this->hasMany(Client::class);
+        return $this->belongsToMany(Client::class);
     }
+
+    public function evenements()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+    
 
     // Simple function 
 

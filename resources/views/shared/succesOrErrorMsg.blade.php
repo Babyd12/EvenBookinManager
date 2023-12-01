@@ -14,8 +14,14 @@
         </div>
  
     @endif
-
-
+    
+    @if (!empty($error) )
+    <div class="alert alert-danger">
+        <ul class="my-0">        
+                <li> {{ $error }} </li>
+        </ul>
+    </div>
+    @endif
 
     @yield('content')
 </div>

@@ -25,10 +25,11 @@ class DatabaseSeeder extends Seeder
         $evenement_id = [1, 2, 3, 4, 5, 6, 7, 8];
         foreach ($associations as $association) {
             // Supposons que votre table d'association a les colonnes client_id et reservation_id
-            DB::table('client_reservations')->insert([
+            DB::table('client_evenement')->insert([
                 'reference' => fake()->numerify('REF-#####'),
                 'date_reservation' => fake()->date(),
                 'est_accepte_ou_pas' => fake()->boolean(),
+                'est_accompager_par' => $client_id[mt_rand(0, 7)],
                 'client_id' => $client_id[mt_rand(0, 7)],
                 'evenement_id' => $evenement_id[mt_rand(0, 7)],
             ]);

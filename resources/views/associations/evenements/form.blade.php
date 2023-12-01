@@ -2,7 +2,7 @@
 
 @section('title', 'Associations') 
 
-@section('nom_association', Auth::guard('clients')->user()->nom) 
+@section('nom_association', Auth::guard('associations')->user()->nom) 
 
 @section('content')
    
@@ -19,7 +19,7 @@
         @include('shared.input', ['type' => 'date', 'label' => 'Date de l\'evenement ', 'name' => 'date_evenement', 'value' => $evenement->date_evenement ])
         @include('shared.input', ['type' => 'date', 'label' => 'Date de l\'imite d\'inscription ', 'name' => 'date_limite_inscription', 'value' => $evenement->date_limite_inscription,])
         @include('shared.checkbox', [ 'label' => 'Cet évenement est-il cloturé ?', 'name' => 'est_cloturer_ou_pas', 'value' => $evenement->est_cloturer_ou_pas ])
-        @include('shared.input', ['type' => 'hidden', 'label' => '', 'name' => 'association_id', 'value' => Auth::guard('clients')->user()->id ])
+        @include('shared.input', ['type' => 'hidden', 'label' => '', 'name' => 'association_id', 'value' => Auth::guard('associations')->user()->id ])
         @include('shared.submitBtn', ['class' => 'col-lg-6 text-center bg-dark', 'value' =>  $evenement->exists ? 'Editer' : 'Ajouter' ])
     </form>
 </div>

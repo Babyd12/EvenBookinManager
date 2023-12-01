@@ -2,7 +2,7 @@
 
 @section('title', 'Liste des évenements') 
 
-@section('nom_association', Auth::guard('clients')->user()->nom) 
+@section('nom_association', Auth::guard('associations')->user()->nom) 
 
 @section('content')
 <table class="table table-striped">
